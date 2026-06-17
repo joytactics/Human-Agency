@@ -1,0 +1,764 @@
+:root {
+  --bg: #050506;
+  --ink: #f7f3ea;
+  --muted: rgba(247, 243, 234, 0.62);
+  --faint: rgba(247, 243, 234, 0.18);
+  --line: rgba(247, 243, 234, 0.82);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --brand-y: 50vh;
+  --brand-top-y: 16vh;
+  --corner-scale: 0.36;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::selection {
+  background: rgba(247, 243, 234, 0.2);
+}
+
+.experience {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  cursor: pointer;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(247, 243, 234, 0.08), transparent 28rem),
+    radial-gradient(circle at 18% 74%, rgba(120, 118, 107, 0.12), transparent 26rem),
+    #050506;
+}
+
+.ambient {
+  position: absolute;
+  inset: auto;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(42px);
+  opacity: 0.35;
+}
+
+.ambient-one {
+  width: 42vw;
+  height: 42vw;
+  top: -22vw;
+  right: -8vw;
+  background: radial-gradient(circle, rgba(247, 243, 234, 0.16), transparent 66%);
+}
+
+.ambient-two {
+  width: 38vw;
+  height: 38vw;
+  bottom: -20vw;
+  left: -9vw;
+  background: radial-gradient(circle, rgba(112, 111, 101, 0.2), transparent 68%);
+}
+
+.anchor-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  pointer-events: none;
+}
+
+.anchor-layer::after {
+  content: "";
+  position: absolute;
+  top: 1.6vh;
+  left: 3vw;
+  right: 3vw;
+  height: clamp(7.6rem, 13vw, 10.75rem);
+  border: 1px solid rgba(247, 243, 234, 0.26);
+  opacity: 0;
+  transition: opacity 760ms var(--ease) 760ms;
+}
+
+.state-2 .anchor-layer::after,
+.state-3 .anchor-layer::after,
+.state-4 .anchor-layer::after,
+.state-5 .anchor-layer::after,
+.state-6 .anchor-layer::after,
+.state-7 .anchor-layer::after,
+.state-8 .anchor-layer::after,
+.state-9 .anchor-layer::after,
+.state-10 .anchor-layer::after {
+  opacity: 1;
+}
+
+.title-font {
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.8rem, 9vw, 8.7rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.9;
+  white-space: nowrap;
+  text-rendering: geometricPrecision;
+}
+
+.subtext-font {
+  color: var(--muted);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(1rem, 1.55vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.quote-copy-font {
+  color: rgba(247, 243, 234, 0.86);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 3.1vw, 3.25rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.brand-title {
+  position: absolute;
+  top: var(--brand-y);
+  left: 50%;
+  width: min(92vw, 1100px);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  filter: blur(0);
+  transition:
+    top 1100ms var(--ease),
+    font-size 1100ms var(--ease),
+    opacity 420ms var(--ease),
+    filter 420ms var(--ease),
+    transform 1100ms var(--ease);
+}
+
+.state-2 .brand-title,
+.state-3 .brand-title,
+.state-4 .brand-title,
+.state-5 .brand-title,
+.state-6 .brand-title,
+.state-7 .brand-title,
+.state-8 .brand-title,
+.state-9 .brand-title,
+.state-10 .brand-title {
+  top: 5vh;
+  font-size: clamp(2.4rem, 4.8vw, 4.45rem);
+  opacity: 0.86;
+  filter: blur(0);
+  transform: translate(-50%, 0);
+}
+
+.state-1 .brand-title {
+  opacity: 0;
+  filter: blur(8px);
+}
+
+.tagline {
+  position: absolute;
+  top: calc(var(--brand-y) + clamp(3.3rem, 6.4vw, 6rem));
+  left: 50%;
+  width: min(86vw, 680px);
+  margin: 0;
+  transform: translateX(-50%);
+  opacity: 1;
+  filter: blur(0);
+  transition:
+    top 1100ms var(--ease),
+    font-size 1100ms var(--ease),
+    opacity 900ms var(--ease),
+    filter 900ms var(--ease);
+}
+
+.state-2 .tagline,
+.state-3 .tagline,
+.state-4 .tagline,
+.state-5 .tagline,
+.state-6 .tagline,
+.state-7 .tagline,
+.state-8 .tagline,
+.state-9 .tagline,
+.state-10 .tagline {
+  top: calc(5vh + clamp(2.95rem, 5.45vw, 5.05rem));
+  font-size: clamp(0.68rem, 1.02vw, 0.92rem);
+  opacity: 0.68;
+  filter: blur(0);
+}
+
+.state-1 .tagline {
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.quote-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  filter: blur(9px);
+  transition: opacity 520ms var(--ease), filter 520ms var(--ease);
+}
+
+.state-1 .quote-layer {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.state-2 .quote-layer,
+.state-3 .quote-layer,
+.state-4 .quote-layer,
+.state-5 .quote-layer,
+.state-6 .quote-layer,
+.state-7 .quote-layer,
+.state-8 .quote-layer,
+.state-9 .quote-layer,
+.state-10 .quote-layer {
+  opacity: 0;
+  filter: blur(12px);
+}
+
+.quote-line,
+.quote-attribution {
+  color: rgba(247, 243, 234, 0.86);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 3.1vw, 3.25rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.quote-before {
+  position: absolute;
+  bottom: calc(50vh + clamp(3.7rem, 6.2vw, 5.8rem));
+  left: 50%;
+  width: min(88vw, 960px);
+  transform: translateX(-50%);
+  text-align: center;
+  min-height: 1.25em;
+}
+
+.quote-brand {
+  position: absolute;
+  top: var(--brand-y);
+  left: 50%;
+  width: min(92vw, 1100px);
+  transform: translate(-50%, -50%);
+  min-height: clamp(3.8rem, 9vw, 8.7rem);
+  text-align: center;
+}
+
+.quote-bottom {
+  position: absolute;
+  top: calc(50vh + clamp(3.7rem, 6.2vw, 5.8rem));
+  left: 50%;
+  width: min(82vw, 960px);
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.quote-after {
+  max-width: 960px;
+  min-height: 0;
+  text-align: center;
+}
+
+.quote-attribution {
+  margin-top: clamp(1.45rem, 2.8vw, 2.4rem);
+  color: rgba(247, 243, 234, 0.58);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(0.72rem, 0.82vw, 0.86rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.type-word {
+  display: inline-block;
+  margin-right: 0.26em;
+}
+
+.type-char {
+  display: inline-block;
+  min-width: 0.02em;
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    opacity 80ms linear,
+    filter 160ms var(--ease);
+  transition-delay: calc(var(--i) * 31ms);
+}
+
+.quote-brand .type-word {
+  margin-right: 0;
+}
+
+.state-1 .quote-layer .type-char,
+.state-2 .founder-page .type-char,
+.state-3 .founder-page .type-char,
+.state-4 .founder-page .type-char,
+.state-5 .founder-page .type-char,
+.state-6 .founder-page .type-char,
+.state-7 .founder-page .type-char,
+.state-8 .founder-page .type-char,
+.state-9 .founder-page .type-char,
+.state-10 .founder-page .type-char,
+.state-3 .cohort-page .type-char,
+.state-4 .cohort-page .type-char,
+.state-5 .cohort-page .type-char,
+.state-6 .cohort-page .type-char,
+.state-7 .cohort-page .type-char,
+.state-8 .cohort-page .type-char,
+.state-9 .cohort-page .type-char,
+.state-10 .cohort-page .type-char,
+.state-4 .foundation-page .type-char,
+.state-5 .foundation-page .type-char,
+.state-6 .foundation-page .type-char,
+.state-7 .foundation-page .type-char,
+.state-8 .foundation-page .type-char,
+.state-9 .foundation-page .type-char,
+.state-10 .foundation-page .type-char,
+.state-5 .venture-page .type-char,
+.state-6 .venture-page .type-char,
+.state-7 .venture-page .type-char,
+.state-8 .venture-page .type-char,
+.state-9 .venture-page .type-char,
+.state-10 .venture-page .type-char,
+.state-6 .investable-page .type-char,
+.state-7 .investable-page .type-char,
+.state-8 .investable-page .type-char,
+.state-9 .investable-page .type-char,
+.state-10 .investable-page .type-char {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.diagram-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 700ms var(--ease);
+}
+
+.state-3 .diagram-layer,
+.state-4 .diagram-layer,
+.state-5 .diagram-layer,
+.state-6 .diagram-layer,
+.state-7 .diagram-layer,
+.state-8 .diagram-layer,
+.state-9 .diagram-layer,
+.state-10 .diagram-layer {
+  opacity: 1;
+}
+
+.state-2 .diagram-layer {
+  opacity: 1;
+}
+
+.relationship-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.relationship {
+  opacity: 0;
+  transition: opacity 650ms var(--ease);
+}
+
+.relationship-line {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.16;
+  stroke-linecap: round;
+  marker-end: url("#arrowhead");
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition:
+    stroke-dashoffset 1200ms var(--ease),
+    opacity 650ms var(--ease);
+}
+
+.relationship-line-stem {
+  marker-end: none;
+}
+
+#arrowhead path {
+  fill: var(--ink);
+}
+
+.relationship-labels {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.relationship-text {
+  position: absolute;
+  color: rgba(247, 243, 234, 0.86);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(1.05rem, 1.35vw, 1.35rem);
+  font-style: italic;
+  letter-spacing: 0;
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    opacity 700ms var(--ease) 420ms,
+    filter 700ms var(--ease) 420ms;
+}
+
+.relationship-text-mentorship {
+  top: 32%;
+  left: 47%;
+  transform: translateX(-50%);
+}
+
+.relationship-text-develop {
+  top: 47%;
+  left: 90%;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%);
+}
+
+.relationship-text-selection {
+  top: 83.5%;
+  left: 47%;
+  transform: translateX(-50%);
+}
+
+.relationship-text-invest {
+  top: 54.5%;
+  left: 18%;
+  transform: translateX(-50%);
+}
+
+.state-7 .relationship-mentorship,
+.state-8 .relationship-mentorship,
+.state-8 .relationship-develop,
+.state-9 .relationship-mentorship,
+.state-9 .relationship-develop,
+.state-9 .relationship-selection,
+.state-10 .relationship-mentorship,
+.state-10 .relationship-develop,
+.state-10 .relationship-selection,
+.state-10 .relationship-investable {
+  opacity: 1;
+}
+
+.state-7 .relationship-mentorship .relationship-line,
+.state-8 .relationship-develop .relationship-line,
+.state-9 .relationship-selection .relationship-line,
+.state-10 .relationship-investable .relationship-line {
+  stroke-dashoffset: 0;
+}
+
+.state-7 .relationship-text-mentorship,
+.state-8 .relationship-text-develop,
+.state-9 .relationship-text-selection,
+.state-10 .relationship-text-invest {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.state-8 .relationship-mentorship,
+.state-9 .relationship-mentorship,
+.state-9 .relationship-develop,
+.state-10 .relationship-mentorship,
+.state-10 .relationship-develop,
+.state-10 .relationship-selection {
+  opacity: 0.18;
+}
+
+.state-8 .relationship-mentorship .relationship-line,
+.state-9 .relationship-mentorship .relationship-line,
+.state-9 .relationship-develop .relationship-line,
+.state-10 .relationship-mentorship .relationship-line,
+.state-10 .relationship-develop .relationship-line,
+.state-10 .relationship-selection .relationship-line {
+  stroke-dashoffset: 0;
+}
+
+.state-8 .relationship-text-mentorship,
+.state-9 .relationship-text-mentorship,
+.state-9 .relationship-text-develop,
+.state-10 .relationship-text-mentorship,
+.state-10 .relationship-text-develop,
+.state-10 .relationship-text-selection {
+  opacity: 0.18;
+  filter: blur(0);
+}
+
+.state-8 .relationship-text-develop,
+.state-9 .relationship-text-selection {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.concept-page {
+  position: absolute;
+  z-index: 1;
+  top: var(--brand-y);
+  left: 50%;
+  width: min(92vw, 1100px);
+  transform: translate(-50%, -50%);
+  transform-origin: top left;
+  text-align: center;
+  opacity: 0;
+  filter: blur(8px);
+  pointer-events: none;
+  transition:
+    top 1100ms var(--ease),
+    left 1100ms var(--ease),
+    transform 1100ms var(--ease),
+    opacity 900ms var(--ease),
+    filter 900ms var(--ease);
+}
+
+.concept-title {
+  margin: 0;
+}
+
+.concept-subtext {
+  position: absolute;
+  top: calc(50% + clamp(2.2rem, 4.2vw, 4.4rem));
+  left: 50%;
+  width: min(82vw, 960px);
+  margin: 0;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.state-2 .founder-page,
+.state-3 .founder-page,
+.state-4 .founder-page,
+.state-5 .founder-page,
+.state-6 .founder-page,
+.state-7 .founder-page,
+.state-8 .founder-page,
+.state-9 .founder-page,
+.state-10 .founder-page,
+.state-3 .cohort-page,
+.state-4 .cohort-page,
+.state-5 .cohort-page,
+.state-6 .cohort-page,
+.state-7 .cohort-page,
+.state-8 .cohort-page,
+.state-9 .cohort-page,
+.state-10 .cohort-page,
+.state-4 .foundation-page,
+.state-5 .foundation-page,
+.state-6 .foundation-page,
+.state-7 .foundation-page,
+.state-8 .foundation-page,
+.state-9 .foundation-page,
+.state-10 .foundation-page,
+.state-5 .venture-page,
+.state-6 .venture-page,
+.state-7 .venture-page,
+.state-8 .venture-page,
+.state-9 .venture-page,
+.state-10 .venture-page,
+.state-6 .investable-page,
+.state-7 .investable-page,
+.state-8 .investable-page,
+.state-9 .investable-page,
+.state-10 .investable-page {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.state-3 .founder-page,
+.state-4 .founder-page,
+.state-5 .founder-page,
+.state-6 .founder-page,
+.state-7 .founder-page,
+.state-8 .founder-page,
+.state-9 .founder-page,
+.state-10 .founder-page {
+  top: 14vh;
+  left: 7vw;
+  transform: scale(var(--corner-scale));
+  text-align: left;
+}
+
+.state-3 .founder-page,
+.state-4 .founder-page,
+.state-5 .founder-page,
+.state-6 .founder-page,
+.state-7 .founder-page,
+.state-8 .founder-page,
+.state-9 .founder-page,
+.state-10 .founder-page,
+.state-4 .cohort-page,
+.state-5 .cohort-page,
+.state-6 .cohort-page,
+.state-7 .cohort-page,
+.state-8 .cohort-page,
+.state-9 .cohort-page,
+.state-10 .cohort-page,
+.state-5 .foundation-page,
+.state-6 .foundation-page,
+.state-7 .foundation-page,
+.state-8 .foundation-page,
+.state-9 .foundation-page,
+.state-10 .foundation-page,
+.state-6 .venture-page,
+.state-7 .venture-page,
+.state-8 .venture-page,
+.state-9 .venture-page,
+.state-10 .venture-page {
+  opacity: 0.32;
+  filter: grayscale(1);
+}
+
+.state-4 .cohort-page,
+.state-5 .cohort-page,
+.state-6 .cohort-page,
+.state-7 .cohort-page,
+.state-8 .cohort-page,
+.state-9 .cohort-page,
+.state-10 .cohort-page {
+  top: 14vh;
+  left: 82vw;
+  transform: translateX(calc(var(--corner-scale) * -100%)) scale(var(--corner-scale));
+  text-align: right;
+}
+
+.state-5 .foundation-page,
+.state-6 .foundation-page,
+.state-7 .foundation-page,
+.state-8 .foundation-page,
+.state-9 .foundation-page,
+.state-10 .foundation-page {
+  top: 72vh;
+  left: 82vw;
+  transform: translateX(calc(var(--corner-scale) * -100%)) scale(var(--corner-scale));
+  text-align: center;
+}
+
+.state-6 .venture-page,
+.state-7 .venture-page,
+.state-8 .venture-page,
+.state-9 .venture-page,
+.state-10 .venture-page {
+  top: 72vh;
+  left: 7vw;
+  transform: scale(var(--corner-scale));
+  text-align: center;
+}
+
+.progress {
+  position: fixed;
+  right: 2rem;
+  bottom: 1.7rem;
+  color: rgba(247, 243, 234, 0.36);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --brand-y: 50vh;
+    --brand-top-y: 14vh;
+  }
+
+  .brand-title {
+    white-space: normal;
+    font-size: clamp(3.4rem, 18vw, 6.8rem);
+  }
+
+  .quote-layer {
+    inset: 0;
+  }
+
+  .quote-line {
+    font-size: clamp(1.22rem, 6vw, 2.2rem);
+  }
+
+  .quote-bottom {
+    top: calc(50vh + 6.5rem);
+    width: min(88vw, 620px);
+  }
+
+  .quote-after {
+    min-height: 8em;
+  }
+
+  .quote-before {
+    bottom: calc(50vh + 6.5rem);
+    width: min(88vw, 620px);
+  }
+
+  .quote-attribution {
+    margin-top: 1.25rem;
+  }
+
+  .quote-brand {
+    white-space: normal;
+    font-size: clamp(3.4rem, 18vw, 6.8rem);
+    min-height: clamp(6.5rem, 24vw, 9rem);
+  }
+
+  .concept-title {
+    white-space: normal;
+    font-size: clamp(3.2rem, 15vw, 6.4rem);
+  }
+
+  .state-3 .founder-title,
+  .state-4 .founder-title,
+  .state-5 .founder-title,
+  .state-6 .founder-title,
+  .state-4 .cohort-title,
+  .state-5 .cohort-title,
+  .state-6 .cohort-title,
+  .state-5 .foundation-title,
+  .state-6 .foundation-title,
+  .state-6 .venture-title {
+    font-size: clamp(1.6rem, 7vw, 3.8rem);
+  }
+
+  .concept-subtext {
+    width: min(84vw, 620px);
+    font-size: 0.95rem;
+  }
+
+  .progress {
+    right: 1.1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
