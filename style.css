@@ -37,6 +37,7 @@ body::selection {
   position: relative;
   width: 100vw;
   min-height: 100vh;
+  overflow: hidden;
   cursor: pointer;
   isolation: isolate;
   background:
@@ -685,48 +686,120 @@ body::selection {
   :root {
     --brand-y: 50vh;
     --brand-top-y: 14vh;
+    --corner-scale: 0.44;
+  }
+
+  html,
+  body,
+  .experience {
+    height: 100dvh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .anchor-layer::after {
+    top: 1.25rem;
+    left: 1rem;
+    right: 1rem;
+    height: clamp(5.7rem, 24vw, 7.25rem);
   }
 
   .brand-title {
     white-space: normal;
-    font-size: clamp(3.4rem, 18vw, 6.8rem);
+    width: min(90vw, 520px);
+    font-size: clamp(3.2rem, 17vw, 5.8rem);
+    line-height: 0.92;
+  }
+
+  .tagline {
+    top: calc(var(--brand-y) + clamp(6.8rem, 26vw, 8.8rem));
+    width: min(86vw, 420px);
+    font-size: clamp(0.95rem, 4vw, 1.2rem);
+    line-height: 1.35;
+  }
+
+  .state-2 .brand-title,
+  .state-3 .brand-title,
+  .state-4 .brand-title,
+  .state-5 .brand-title,
+  .state-6 .brand-title,
+  .state-7 .brand-title,
+  .state-8 .brand-title,
+  .state-9 .brand-title,
+  .state-10 .brand-title {
+    top: 2.35rem;
+    width: min(80vw, 420px);
+    font-size: clamp(2.1rem, 10vw, 3.25rem);
+    line-height: 0.92;
+  }
+
+  .state-2 .tagline,
+  .state-3 .tagline,
+  .state-4 .tagline,
+  .state-5 .tagline,
+  .state-6 .tagline,
+  .state-7 .tagline,
+  .state-8 .tagline,
+  .state-9 .tagline,
+  .state-10 .tagline {
+    top: calc(2.35rem + clamp(3.1rem, 13vw, 4.35rem));
+    width: min(78vw, 380px);
+    font-size: clamp(0.8rem, 3.25vw, 0.98rem);
+    line-height: 1.25;
   }
 
   .quote-layer {
     inset: 0;
   }
 
-  .quote-line {
-    font-size: clamp(1.22rem, 6vw, 2.2rem);
+  .quote-line,
+  .quote-copy-font {
+    font-size: clamp(1.18rem, 5.25vw, 1.95rem);
+    line-height: 1.2;
   }
 
   .quote-bottom {
-    top: calc(50vh + 6.5rem);
+    top: calc(50vh + clamp(5.9rem, 25vw, 7.9rem));
     width: min(88vw, 620px);
   }
 
   .quote-after {
-    min-height: 8em;
+    min-height: 9em;
   }
 
   .quote-before {
-    bottom: calc(50vh + 6.5rem);
+    bottom: calc(50vh + clamp(5.9rem, 25vw, 7.9rem));
     width: min(88vw, 620px);
   }
 
   .quote-attribution {
     margin-top: 1.25rem;
+    font-size: clamp(0.68rem, 2.9vw, 0.82rem);
   }
 
   .quote-brand {
     white-space: normal;
-    font-size: clamp(3.4rem, 18vw, 6.8rem);
+    width: min(90vw, 520px);
+    font-size: clamp(3.2rem, 17vw, 5.8rem);
+    line-height: 0.92;
     min-height: clamp(6.5rem, 24vw, 9rem);
+  }
+
+  .concept-page {
+    width: min(90vw, 520px);
   }
 
   .concept-title {
     white-space: normal;
-    font-size: clamp(3.2rem, 15vw, 6.4rem);
+    font-size: clamp(3rem, 14.5vw, 5.2rem);
+    line-height: 0.92;
+  }
+
+  .concept-subtext {
+    top: calc(50% + clamp(3.35rem, 15vw, 5.1rem));
+    width: min(86vw, 520px);
+    font-size: clamp(1.1rem, 4.9vw, 1.55rem);
+    line-height: 1.22;
   }
 
   .state-3 .founder-title,
@@ -739,12 +812,137 @@ body::selection {
   .state-5 .foundation-title,
   .state-6 .foundation-title,
   .state-6 .venture-title {
-    font-size: clamp(1.6rem, 7vw, 3.8rem);
+    font-size: clamp(1.65rem, 7.4vw, 2.5rem);
+    line-height: 0.95;
   }
 
-  .concept-subtext {
-    width: min(84vw, 620px);
-    font-size: 0.95rem;
+  .state-3 .founder-page,
+  .state-4 .founder-page,
+  .state-5 .founder-page,
+  .state-6 .founder-page,
+  .state-7 .founder-page,
+  .state-8 .founder-page,
+  .state-9 .founder-page,
+  .state-10 .founder-page {
+    top: 17.5vh;
+    left: 6vw;
+  }
+
+  .state-4 .cohort-page,
+  .state-5 .cohort-page,
+  .state-6 .cohort-page,
+  .state-7 .cohort-page,
+  .state-8 .cohort-page,
+  .state-9 .cohort-page,
+  .state-10 .cohort-page {
+    top: 17.5vh;
+    left: 94vw;
+  }
+
+  .state-5 .foundation-page,
+  .state-6 .foundation-page,
+  .state-7 .foundation-page,
+  .state-8 .foundation-page,
+  .state-9 .foundation-page,
+  .state-10 .foundation-page {
+    top: 74vh;
+    left: 94vw;
+  }
+
+  .state-6 .venture-page,
+  .state-7 .venture-page,
+  .state-8 .venture-page,
+  .state-9 .venture-page,
+  .state-10 .venture-page {
+    top: 74vh;
+    left: 6vw;
+  }
+
+  .state-3 .founder-page .concept-subtext,
+  .state-4 .founder-page .concept-subtext,
+  .state-5 .founder-page .concept-subtext,
+  .state-6 .founder-page .concept-subtext,
+  .state-7 .founder-page .concept-subtext,
+  .state-8 .founder-page .concept-subtext,
+  .state-9 .founder-page .concept-subtext,
+  .state-10 .founder-page .concept-subtext,
+  .state-4 .cohort-page .concept-subtext,
+  .state-5 .cohort-page .concept-subtext,
+  .state-6 .cohort-page .concept-subtext,
+  .state-7 .cohort-page .concept-subtext,
+  .state-8 .cohort-page .concept-subtext,
+  .state-9 .cohort-page .concept-subtext,
+  .state-10 .cohort-page .concept-subtext,
+  .state-5 .foundation-page .concept-subtext,
+  .state-6 .foundation-page .concept-subtext,
+  .state-7 .foundation-page .concept-subtext,
+  .state-8 .foundation-page .concept-subtext,
+  .state-9 .foundation-page .concept-subtext,
+  .state-10 .foundation-page .concept-subtext,
+  .state-6 .venture-page .concept-subtext,
+  .state-7 .venture-page .concept-subtext,
+  .state-8 .venture-page .concept-subtext,
+  .state-9 .venture-page .concept-subtext,
+  .state-10 .venture-page .concept-subtext {
+    opacity: 0;
+    filter: blur(5px);
+  }
+
+  .state-3 .founder-title,
+  .state-4 .founder-title,
+  .state-5 .founder-title,
+  .state-6 .founder-title,
+  .state-7 .founder-title,
+  .state-8 .founder-title,
+  .state-9 .founder-title,
+  .state-10 .founder-title,
+  .state-4 .cohort-title,
+  .state-5 .cohort-title,
+  .state-6 .cohort-title,
+  .state-7 .cohort-title,
+  .state-8 .cohort-title,
+  .state-9 .cohort-title,
+  .state-10 .cohort-title,
+  .state-5 .foundation-title,
+  .state-6 .foundation-title,
+  .state-7 .foundation-title,
+  .state-8 .foundation-title,
+  .state-9 .foundation-title,
+  .state-10 .foundation-title,
+  .state-6 .venture-title,
+  .state-7 .venture-title,
+  .state-8 .venture-title,
+  .state-9 .venture-title,
+  .state-10 .venture-title {
+    opacity: 1;
+  }
+
+  .relationship-line {
+    stroke-width: 0.34;
+  }
+
+  .relationship-text {
+    font-size: clamp(0.86rem, 3.9vw, 1.08rem);
+  }
+
+  .relationship-text-mentorship {
+    top: 29%;
+    left: 50%;
+  }
+
+  .relationship-text-develop {
+    top: 52%;
+    left: 93%;
+  }
+
+  .relationship-text-selection {
+    top: 83%;
+    left: 50%;
+  }
+
+  .relationship-text-invest {
+    top: 55%;
+    left: 21%;
   }
 
   .progress {
