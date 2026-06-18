@@ -600,8 +600,8 @@ body::selection {
 .state-8 .founder-page,
 .state-9 .founder-page,
 .state-10 .founder-page {
-  top: 14vh;
-  left: 7vw;
+  top: max(13.25rem, 23vh);
+  left: clamp(4.5rem, 8vw, 7.5rem);
   transform: scale(var(--corner-scale));
   text-align: left;
 }
@@ -643,8 +643,8 @@ body::selection {
 .state-8 .cohort-page,
 .state-9 .cohort-page,
 .state-10 .cohort-page {
-  top: 14vh;
-  left: 82vw;
+  top: max(13.25rem, 23vh);
+  left: min(84vw, calc(100vw - 5rem));
   transform: translateX(calc(var(--corner-scale) * -100%)) scale(var(--corner-scale));
   text-align: right;
 }
@@ -655,8 +655,8 @@ body::selection {
 .state-8 .foundation-page,
 .state-9 .foundation-page,
 .state-10 .foundation-page {
-  top: 72vh;
-  left: 82vw;
+  top: min(72vh, calc(100vh - 10.75rem));
+  left: min(84vw, calc(100vw - 5rem));
   transform: translateX(calc(var(--corner-scale) * -100%)) scale(var(--corner-scale));
   text-align: center;
 }
@@ -666,8 +666,8 @@ body::selection {
 .state-8 .venture-page,
 .state-9 .venture-page,
 .state-10 .venture-page {
-  top: 72vh;
-  left: 7vw;
+  top: min(72vh, calc(100vh - 10.75rem));
+  left: clamp(4.5rem, 8vw, 7.5rem);
   transform: scale(var(--corner-scale));
   text-align: center;
 }
@@ -686,7 +686,7 @@ body::selection {
   :root {
     --brand-y: 50vh;
     --brand-top-y: 14vh;
-    --corner-scale: 0.44;
+    --corner-scale: 0.38;
   }
 
   html,
@@ -824,8 +824,8 @@ body::selection {
   .state-8 .founder-page,
   .state-9 .founder-page,
   .state-10 .founder-page {
-    top: 17.5vh;
-    left: 6vw;
+    top: max(8.9rem, 17.5vh);
+    left: 7vw;
   }
 
   .state-4 .cohort-page,
@@ -835,8 +835,8 @@ body::selection {
   .state-8 .cohort-page,
   .state-9 .cohort-page,
   .state-10 .cohort-page {
-    top: 17.5vh;
-    left: 94vw;
+    top: max(8.9rem, 17.5vh);
+    left: 93vw;
   }
 
   .state-5 .foundation-page,
@@ -845,8 +845,8 @@ body::selection {
   .state-8 .foundation-page,
   .state-9 .foundation-page,
   .state-10 .foundation-page {
-    top: 74vh;
-    left: 94vw;
+    top: min(74vh, calc(100dvh - 11.25rem));
+    left: 93vw;
   }
 
   .state-6 .venture-page,
@@ -854,8 +854,8 @@ body::selection {
   .state-8 .venture-page,
   .state-9 .venture-page,
   .state-10 .venture-page {
-    top: 74vh;
-    left: 6vw;
+    top: min(74vh, calc(100dvh - 11.25rem));
+    left: 7vw;
   }
 
   .state-3 .founder-page .concept-subtext,
