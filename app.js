@@ -108,8 +108,10 @@ function handleKeydown(event) {
   }
 }
 
-function handlePointerAdvance(event) {
-  if (event.clientX < window.innerWidth / 2) {
+let lastTouchNavigationAt = 0;
+
+function navigateFromX(clientX) {
+  if (clientX < window.innerWidth / 2) {
     retreat();
     return;
   }
@@ -117,10 +119,32 @@ function handlePointerAdvance(event) {
   advance();
 }
 
+function handlePointerNavigation(event) {
+  if (event.pointerType === "mouse") return;
+  event.preventDefault();
+  lastTouchNavigationAt = Date.now();
+  navigateFromX(event.clientX);
+}
+
+function handleTouchNavigation(event) {
+  const touch = event.changedTouches[0];
+  if (!touch) return;
+  event.preventDefault();
+  lastTouchNavigationAt = Date.now();
+  navigateFromX(touch.clientX);
+}
+
+function handleClickNavigation(event) {
+  if (Date.now() - lastTouchNavigationAt < 700) return;
+  navigateFromX(event.clientX);
+}
+
 hydrateTypewriter();
 setState(0);
 
-window.addEventListener("click", handlePointerAdvance);
+window.addEventListener("pointerup", handlePointerNavigation);
+window.addEventListener("touchend", handleTouchNavigation, { passive: false });
+window.addEventListener("click", handleClickNavigation);
 window.addEventListener("keydown", handleKeydown);
 window.addEventListener("resize", scheduleRelationshipGeometry);
 
