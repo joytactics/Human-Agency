@@ -108,10 +108,19 @@ function handleKeydown(event) {
   }
 }
 
+function handlePointerAdvance(event) {
+  if (event.clientX < window.innerWidth / 2) {
+    retreat();
+    return;
+  }
+
+  advance();
+}
+
 hydrateTypewriter();
 setState(0);
 
-window.addEventListener("click", advance);
+window.addEventListener("click", handlePointerAdvance);
 window.addEventListener("keydown", handleKeydown);
 window.addEventListener("resize", scheduleRelationshipGeometry);
 
